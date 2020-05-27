@@ -68,3 +68,5 @@ env.yml
 
 # Local configuration files
 local.settings.json
+
+.DS_Store

@@ -13,7 +13,7 @@ namespace team01.onhandChangefeed
         
         public static void Run([CosmosDBTrigger(
             databaseName: "inventory",
-            collectionName: "shipment",
+            collectionName: "shipments",
             ConnectionStringSetting = "cosmoskimopenhack001_DOCUMENTDB",
             CreateLeaseCollectionIfNotExists  = true,
             LeaseCollectionName = "leasesShipment")]IReadOnlyList<Document> input, ILogger log)

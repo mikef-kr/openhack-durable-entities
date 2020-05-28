@@ -29,10 +29,7 @@ namespace InventoryManagement
 
             await context.CallActivityAsync("DBWriter", mdsItem);
 
-            //await container.UpsertItemAsync(partitionKey: new PartitionKey(upserted.), item: upserted);
-
-            //We need to make a call to DBWriter
-  
+   
         }
     }
 

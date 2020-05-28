@@ -2,11 +2,14 @@ using System.Threading.Tasks;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.DurableTask;
 using Models;
+using Microsoft.Azure.Cosmos;
+using System;
 
 namespace InventoryManagement
 {
     public static class StoreItemsOrchestration
     {
+
         [FunctionName("StoreItemsOrchestration")]
         public static async Task RunOrchestrator(
             [OrchestrationTrigger] IDurableOrchestrationContext context)
@@ -22,7 +25,19 @@ namespace InventoryManagement
             var proxy = context.CreateEntityProxy<IStoreItemEntity>(entityId);
 
             MDS mdsItem = await proxy.ProcessEvents(eventItem);
+
+
+            await context.CallActivityAsync("DBWriter", mdsItem);
+
+            //await container.UpsertItemAsync(partitionKey: new PartitionKey(upserted.), item: upserted);
+
+            //We need to make a call to DBWriter
   
         }
     }
+
 }
+
+
+
+

@@ -18,3 +18,4 @@ namespace Models
         public DateTime lastUpdateTimestamp { get; set; }
     }
 }
+

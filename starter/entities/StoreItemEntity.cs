@@ -16,12 +16,11 @@ namespace InventoryManagement
 
         public Dictionary<string,StoreItems> storeItems;
 
-        [FunctionName("Foo")]
+        [FunctionName(nameof(StoreItemEntity))]
         public static Task counter([EntityTrigger] IDurableEntityContext ctx)
-            => ctx.DispatchAsync<Counter>();
+            => ctx.DispatchAsync<StoreItemEntity>();
 
-        [FunctionName("ProcessEvents")]
-
+//        [FunctionName("ProcessEvents")]
         public Task<MDS> ProcessEvents(ItemEvent itemEvent)
          {
             StoreItems currentStoreItem;
